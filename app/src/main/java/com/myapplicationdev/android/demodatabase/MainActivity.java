@@ -72,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
                     txt += i + ". " + data.get(i) + "\n";
                 }
                 tvResults.setText(txt);
+
+                tasks.clear();
+                for (int i = 0; i< data2.size(); i++){
+                    tasks.add(data2.get(i));
+                }
+                aa.notifyDataSetChanged();
             }
         });
 
