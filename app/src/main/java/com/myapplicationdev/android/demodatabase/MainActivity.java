@@ -59,18 +59,18 @@ public class MainActivity extends AppCompatActivity {
                 // activity's Context
                 DBHelper db = new DBHelper(MainActivity.this);
 
-                // Insert a task
                 ArrayList<String> data = db.getTaskContent();
-                tasks = db.getTasks();
+                ArrayList<Task> data2 = db.getTasks();
                 db.close();
 
+                aa = new TaskAdapter(MainActivity.this, R.layout.row, data2);
+                lv.setAdapter(aa);
+
                 String txt = "";
-                for (int i = 0; i < data.size(); i++) {
+                for(int i = 0; i < data.size(); i++){
                     Log.d("Database Content", i +". "+data.get(i));
                     txt += i + ". " + data.get(i) + "\n";
                 }
-                aa.notifyDataSetChanged();
-
                 tvResults.setText(txt);
             }
         });
